@@ -109,7 +109,8 @@ extension SipCallsViewController : SipClientDelegate {
 
 extension SipCallsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calls.count
+//        return calls.count
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

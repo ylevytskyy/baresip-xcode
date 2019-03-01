@@ -25,6 +25,7 @@
 		B4DCABD122295FB40075BD5B /* libbaresip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCABD022295FB40075BD5B /* libbaresip.a */; };
 		B4DCABD522295FB40075BD5B /* librem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCABD422295FB40075BD5B /* librem.a */; };
 		B4DCABD8222960F40075BD5B /* libre.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCABD7222960F40075BD5B /* libre.a */; };
+		B4DCABDA222964210075BD5B /* static.c in Sources */ = {isa = PBXBuildFile; fileRef = B4DCABD9222964210075BD5B /* static.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		B4DCABD222295FB40075BD5B /* libre.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libre.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4DCABD422295FB40075BD5B /* librem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librem.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4DCABD7222960F40075BD5B /* libre.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libre.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4DCABD9222964210075BD5B /* static.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = static.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		B45EB12A2229214100CF7D5E /* WiseSIPSDK */ = {
 			isa = PBXGroup;
 			children = (
+				B4DCABD9222964210075BD5B /* static.c */,
 				B45EB1622229249D00CF7D5E /* config */,
 				B45EB13D2229218400CF7D5E /* CallCell.swift */,
 				B45EB13E2229218400CF7D5E /* SipCallDetailsViewController.swift */,
@@ -220,6 +223,7 @@
 				B45EB1412229218400CF7D5E /* SipCallDetailsViewController.swift in Sources */,
 				B45EB12C2229214200CF7D5E /* AppDelegate.swift in Sources */,
 				B45EB1422229218400CF7D5E /* SipCallsViewController.swift in Sources */,
+				B4DCABDA222964210075BD5B /* static.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

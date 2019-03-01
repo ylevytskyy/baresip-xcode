@@ -46,20 +46,20 @@ jitter_buffer_delay    5-10        # frames
 #module            stdio.so
 #module            cons.so
 #module            evdev.so
-module            opengles.so
+#module            opengles.so
 
 # Audio codec Modules (in order)
-module            opus.so
-module            silk.so
-module            amr.so
-module            g7221.so
-module            g722.so
-module            g726.so
+#module            opus.so
+#module            silk.so
+#module            amr.so
+#module            g7221.so
+#module            g722.so
+#module            g726.so
 module            g711.so
-module            gsm.so
-module            l16.so
-module            speex.so
-module            bv32.so
+#module            gsm.so
+#module            l16.so
+#module            speex.so
+#module            bv32.so
 
 # Audio filter Modules (in encoding order)
 #module            vumeter.so
