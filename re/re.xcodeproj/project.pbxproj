@@ -1488,6 +1488,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					HAVE_SYS_TIME_H,
 					HAVE_UNISTD_H,
+					HAVE_POLL,
 					"DEBUG=1",
 					"$(inherited)",
 				);

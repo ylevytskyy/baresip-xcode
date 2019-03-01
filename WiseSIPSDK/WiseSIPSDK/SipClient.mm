@@ -322,10 +322,12 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
     // Initialize dynamic modules.
     mod_init();
     
-    NSString *documentDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    if (documentDirectory != nil) {
-        conf_path_set([documentDirectory cStringUsingEncoding:NSUTF8StringEncoding]);
-    }
+//    NSString *documentDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+//    if (documentDirectory != nil) {
+//        conf_path_set([documentDirectory cStringUsingEncoding:NSUTF8StringEncoding]);
+//    }
+    NSString *path = [[[NSBundle mainBundle] pathForResource:@"config" ofType:@""] stringByDeletingLastPathComponent];
+    conf_path_set([path cStringUsingEncoding:NSUTF8StringEncoding]);
     
     error = conf_configure();
     if (error != 0) {

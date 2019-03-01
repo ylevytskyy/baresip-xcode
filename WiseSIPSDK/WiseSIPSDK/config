@@ -5,7 +5,7 @@
 #------------------------------------------------------------------------------
 
 # Core
-poll_method      select        # poll, select, epoll ..
+poll_method      poll        # poll, select, epoll ..
 
 # Input
 input_device        /dev/event0
