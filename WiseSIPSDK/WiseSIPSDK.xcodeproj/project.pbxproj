@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B45EB12C2229214200CF7D5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB12B2229214200CF7D5E /* AppDelegate.swift */; };
+		B45EB1312229214200CF7D5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45EB12F2229214200CF7D5E /* Main.storyboard */; };
+		B45EB1332229214200CF7D5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B45EB1322229214200CF7D5E /* Assets.xcassets */; };
+		B45EB1362229214200CF7D5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45EB1342229214200CF7D5E /* LaunchScreen.storyboard */; };
+		B45EB1402229218400CF7D5E /* CallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB13D2229218400CF7D5E /* CallCell.swift */; };
+		B45EB1412229218400CF7D5E /* SipCallDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB13E2229218400CF7D5E /* SipCallDetailsViewController.swift */; };
+		B45EB1422229218400CF7D5E /* SipCallsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB13F2229218400CF7D5E /* SipCallsViewController.swift */; };
+		B45EB14E2229234500CF7D5E /* SipClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = B45EB14D2229234500CF7D5E /* SipClient.mm */; };
+		B45EB1512229236F00CF7D5E /* libbaresip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB1502229236F00CF7D5E /* libbaresip.a */; };
+		B45EB1532229236F00CF7D5E /* libre.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB1522229236F00CF7D5E /* libre.a */; };
+		B45EB1552229236F00CF7D5E /* librem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB1542229236F00CF7D5E /* librem.a */; };
+		B45EB1572229236F00CF7D5E /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB1562229236F00CF7D5E /* libresolv.9.tbd */; };
+		B45EB15A2229238600CF7D5E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB1582229238600CF7D5E /* AudioToolbox.framework */; };
+		B45EB15B2229238600CF7D5E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB1592229238600CF7D5E /* CFNetwork.framework */; };
+		B45EB15D222923AD00CF7D5E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB15C222923AD00CF7D5E /* AVFoundation.framework */; };
+		B45EB160222923C200CF7D5E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB15E222923C200CF7D5E /* SystemConfiguration.framework */; };
+		B45EB161222923C200CF7D5E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB15F222923C200CF7D5E /* CoreMedia.framework */; };
+		B45EB1632229249D00CF7D5E /* config in Resources */ = {isa = PBXBuildFile; fileRef = B45EB1622229249D00CF7D5E /* config */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B45EB1282229214100CF7D5E /* WiseSIPSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseSIPSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B45EB12B2229214200CF7D5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B45EB1302229214200CF7D5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B45EB1322229214200CF7D5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B45EB1352229214200CF7D5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B45EB1372229214200CF7D5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B45EB13D2229218400CF7D5E /* CallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCell.swift; sourceTree = "<group>"; };
+		B45EB13E2229218400CF7D5E /* SipCallDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SipCallDetailsViewController.swift; sourceTree = "<group>"; };
+		B45EB13F2229218400CF7D5E /* SipCallsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SipCallsViewController.swift; sourceTree = "<group>"; };
+		B45EB1432229224600CF7D5E /* WiseSIPSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WiseSIPSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		B45EB1442229224600CF7D5E /* SipClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SipClient.h; sourceTree = "<group>"; };
+		B45EB14D2229234500CF7D5E /* SipClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SipClient.mm; sourceTree = "<group>"; };
+		B45EB1502229236F00CF7D5E /* libbaresip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libbaresip.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B45EB1522229236F00CF7D5E /* libre.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libre.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B45EB1542229236F00CF7D5E /* librem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librem.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B45EB1562229236F00CF7D5E /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
+		B45EB1582229238600CF7D5E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B45EB1592229238600CF7D5E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B45EB15C222923AD00CF7D5E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B45EB15E222923C200CF7D5E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B45EB15F222923C200CF7D5E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B45EB1622229249D00CF7D5E /* config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B45EB1252229214100CF7D5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B45EB160222923C200CF7D5E /* SystemConfiguration.framework in Frameworks */,
+				B45EB161222923C200CF7D5E /* CoreMedia.framework in Frameworks */,
+				B45EB15D222923AD00CF7D5E /* AVFoundation.framework in Frameworks */,
+				B45EB15A2229238600CF7D5E /* AudioToolbox.framework in Frameworks */,
+				B45EB15B2229238600CF7D5E /* CFNetwork.framework in Frameworks */,
+				B45EB1572229236F00CF7D5E /* libresolv.9.tbd in Frameworks */,
+				B45EB1512229236F00CF7D5E /* libbaresip.a in Frameworks */,
+				B45EB1532229236F00CF7D5E /* libre.a in Frameworks */,
+				B45EB1552229236F00CF7D5E /* librem.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B45EB11F2229214100CF7D5E = {
+			isa = PBXGroup;
+			children = (
+				B45EB12A2229214100CF7D5E /* WiseSIPSDK */,
+				B45EB1292229214100CF7D5E /* Products */,
+				B45EB14F2229236F00CF7D5E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B45EB1292229214100CF7D5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B45EB1282229214100CF7D5E /* WiseSIPSDK.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B45EB12A2229214100CF7D5E /* WiseSIPSDK */ = {
+			isa = PBXGroup;
+			children = (
+				B45EB1622229249D00CF7D5E /* config */,
+				B45EB13D2229218400CF7D5E /* CallCell.swift */,
+				B45EB13E2229218400CF7D5E /* SipCallDetailsViewController.swift */,
+				B45EB13F2229218400CF7D5E /* SipCallsViewController.swift */,
+				B45EB12B2229214200CF7D5E /* AppDelegate.swift */,
+				B45EB12F2229214200CF7D5E /* Main.storyboard */,
+				B45EB1322229214200CF7D5E /* Assets.xcassets */,
+				B45EB1342229214200CF7D5E /* LaunchScreen.storyboard */,
+				B45EB1372229214200CF7D5E /* Info.plist */,
+				B45EB1442229224600CF7D5E /* SipClient.h */,
+				B45EB14D2229234500CF7D5E /* SipClient.mm */,
+				B45EB1432229224600CF7D5E /* WiseSIPSDK-Bridging-Header.h */,
+			);
+			path = WiseSIPSDK;
+			sourceTree = "<group>";
+		};
+		B45EB14F2229236F00CF7D5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B45EB15F222923C200CF7D5E /* CoreMedia.framework */,
+				B45EB15E222923C200CF7D5E /* SystemConfiguration.framework */,
+				B45EB15C222923AD00CF7D5E /* AVFoundation.framework */,
+				B45EB1582229238600CF7D5E /* AudioToolbox.framework */,
+				B45EB1592229238600CF7D5E /* CFNetwork.framework */,
+				B45EB1562229236F00CF7D5E /* libresolv.9.tbd */,
+				B45EB1502229236F00CF7D5E /* libbaresip.a */,
+				B45EB1522229236F00CF7D5E /* libre.a */,
+				B45EB1542229236F00CF7D5E /* librem.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B45EB1272229214100CF7D5E /* WiseSIPSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B45EB13A2229214200CF7D5E /* Build configuration list for PBXNativeTarget "WiseSIPSDK" */;
+			buildPhases = (
+				B45EB1242229214100CF7D5E /* Sources */,
+				B45EB1252229214100CF7D5E /* Frameworks */,
+				B45EB1262229214100CF7D5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WiseSIPSDK;
+			productName = WiseSIPSDK;
+			productReference = B45EB1282229214100CF7D5E /* WiseSIPSDK.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B45EB1202229214100CF7D5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Yuriy Levytskyy";
+				TargetAttributes = {
+					B45EB1272229214100CF7D5E = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
+					};
+				};
+			};
+			buildConfigurationList = B45EB1232229214100CF7D5E /* Build configuration list for PBXProject "WiseSIPSDK" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B45EB11F2229214100CF7D5E;
+			productRefGroup = B45EB1292229214100CF7D5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B45EB1272229214100CF7D5E /* WiseSIPSDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B45EB1262229214100CF7D5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B45EB1632229249D00CF7D5E /* config in Resources */,
+				B45EB1362229214200CF7D5E /* LaunchScreen.storyboard in Resources */,
+				B45EB1332229214200CF7D5E /* Assets.xcassets in Resources */,
+				B45EB1312229214200CF7D5E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B45EB1242229214100CF7D5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B45EB14E2229234500CF7D5E /* SipClient.mm in Sources */,
+				B45EB1402229218400CF7D5E /* CallCell.swift in Sources */,
+				B45EB1412229218400CF7D5E /* SipCallDetailsViewController.swift in Sources */,
+				B45EB12C2229214200CF7D5E /* AppDelegate.swift in Sources */,
+				B45EB1422229218400CF7D5E /* SipCallsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B45EB12F2229214200CF7D5E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B45EB1302229214200CF7D5E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B45EB1342229214200CF7D5E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B45EB1352229214200CF7D5E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B45EB1382229214200CF7D5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../re/include",
+					"$(SRCROOT)/../../rem/include",
+					"$(SRCROOT)/../../baresip/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B45EB1392229214200CF7D5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../re/include",
+					"$(SRCROOT)/../../rem/include",
+					"$(SRCROOT)/../../baresip/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B45EB13B2229214200CF7D5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GFN9SKWLAD;
+				INFOPLIST_FILE = WiseSIPSDK/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiseland.WiseSIPSDK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WiseSIPSDK/WiseSIPSDK-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B45EB13C2229214200CF7D5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GFN9SKWLAD;
+				INFOPLIST_FILE = WiseSIPSDK/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiseland.WiseSIPSDK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WiseSIPSDK/WiseSIPSDK-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B45EB1232229214100CF7D5E /* Build configuration list for PBXProject "WiseSIPSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B45EB1382229214200CF7D5E /* Debug */,
+				B45EB1392229214200CF7D5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B45EB13A2229214200CF7D5E /* Build configuration list for PBXNativeTarget "WiseSIPSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B45EB13B2229214200CF7D5E /* Debug */,
+				B45EB13C2229214200CF7D5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B45EB1202229214100CF7D5E /* Project object */;
+}

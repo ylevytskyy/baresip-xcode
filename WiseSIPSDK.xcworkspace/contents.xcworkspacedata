@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:WiseSIPSDK/WiseSIPSDK.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:re/re.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:rem/rem.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:baresip/baresip.xcodeproj">
+   </FileRef>
+</Workspace>
