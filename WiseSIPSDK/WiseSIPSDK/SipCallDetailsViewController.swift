@@ -32,6 +32,6 @@ extension SipCallDetailsViewController {
         peerUriLabel.text = "Peer URI: \(sipCall.peerUri)"
         peerNameLabel.text = "Peer name: \(sipCall.peerName)"
         callIdLabel.text = "Call ID: \(sipCall.callId)"
-        localUriLabel.text = "Peer URI: \(sipCall.localUri)"
+        localUriLabel.text = "Local URI: \(sipCall.localUri)"
     }
 }

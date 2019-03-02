@@ -179,6 +179,8 @@
 		B4712F3622291F0F0091FBA5 /* stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stream.c; sourceTree = "<group>"; };
 		B4712F3722291F0F0091FBA5 /* message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = message.c; sourceTree = "<group>"; };
 		B4712F3822291F0F0091FBA5 /* vidcodec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vidcodec.c; sourceTree = "<group>"; };
+		B47651F5222AF05D00D4A88F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../openssl/lib/libssl.a; sourceTree = "<group>"; };
+		B47651F6222AF05D00D4A88F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../openssl/lib/libcrypto.a; sourceTree = "<group>"; };
 		B4DCABE2222976B00075BD5B /* dtls_srtp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtls_srtp.h; sourceTree = "<group>"; };
 		B4DCABE3222976B00075BD5B /* srtp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = srtp.c; sourceTree = "<group>"; };
 		B4DCABE4222976B00075BD5B /* module.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = module.mk; sourceTree = "<group>"; };
@@ -307,6 +309,8 @@
 		B415F1E72229B83300399283 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B47651F6222AF05D00D4A88F /* libcrypto.a */,
+				B47651F5222AF05D00D4A88F /* libssl.a */,
 				B415F1EA2229B84300399283 /* AudioToolbox.framework */,
 				B415F1E82229B83300399283 /* CoreAudio.framework */,
 			);
