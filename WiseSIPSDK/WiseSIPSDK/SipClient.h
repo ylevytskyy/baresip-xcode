@@ -13,13 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 @class SipCall;
 @class SipClient;
 
-/// SIP Events
+/// SIP Client Delegate
 @protocol SipClientDelegate<NSObject>
 @optional
-- (void)onWillRegister:(SipClient*)sipSdk;
-- (void)onDidRegister:(SipClient*)sipSdk;
+- (void)onRegistering:(SipClient*)sipSdk;
+- (void)onRegistered:(SipClient*)sipSdk;
 - (void)onFailedRegister:(SipClient*)sipSdk;
-- (void)onWillUnRegister:(SipClient*)sipSdk;
+- (void)onUnRegistering:(SipClient*)sipSdk;
 
 - (void)onCallIncoming:(SipCall*)sipCall;
 - (void)onCallRinging:(SipCall*)sipCall;
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly, nonatomic) NSString* aor;
 
-@property (nonatomic) id<SipClientDelegate> delegate;
+@property (weak, nonatomic) id<SipClientDelegate> delegate;
 
 - (instancetype)initWithUsername:(NSString*)username domain:(NSString*)domain;
 

@@ -18,8 +18,9 @@
 
 std::unordered_map<call*, SipCall*> sipCallsCache;
 
-void call_event(struct call *call, enum call_event ev,
-                const char *str, void *arg) {
+void call_event(struct call *call, enum call_event ev, const char *str, void *arg) {
+    SipCall* sipCall = (__bridge SipCall*)(arg);
+    
     switch (ev) {
         case CALL_EVENT_INCOMING: {
             NSLog(@"CALL_EVENT_INCOMING");
@@ -28,36 +29,71 @@ void call_event(struct call *call, enum call_event ev,
             
         case CALL_EVENT_RINGING: {
             NSLog(@"CALL_EVENT_RINGING");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([sipCall.delegate respondsToSelector:@selector(OnRinging:)]) {
+                    [sipCall.delegate OnRinging:sipCall];
+                }
+            });
         }
             break;
             
         case CALL_EVENT_PROGRESS: {
             NSLog(@"CALL_EVENT_PROGRESS");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([sipCall.delegate respondsToSelector:@selector(OnProgress:)]) {
+                    [sipCall.delegate OnProgress:sipCall];
+                }
+            });
         }
             break;
             
         case CALL_EVENT_ESTABLISHED: {
             NSLog(@"CALL_EVENT_ESTABLISHED");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([sipCall.delegate respondsToSelector:@selector(OnEstablished:)]) {
+                    [sipCall.delegate OnEstablished:sipCall];
+                }
+            });
         }
             break;
             
         case CALL_EVENT_CLOSED: {
             NSLog(@"CALL_EVENT_CLOSED");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([sipCall.delegate respondsToSelector:@selector(OnClosed:)]) {
+                    [sipCall.delegate OnClosed:sipCall];
+                }
+            });
         }
             break;
             
         case CALL_EVENT_TRANSFER: {
             NSLog(@"CALL_EVENT_TRANSFER");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([sipCall.delegate respondsToSelector:@selector(OnTransfer:)]) {
+                    [sipCall.delegate OnTransfer:sipCall];
+                }
+            });
         }
             break;
             
         case CALL_EVENT_TRANSFER_FAILED: {
             NSLog(@"CALL_EVENT_TRANSFER_FAILED");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([sipCall.delegate respondsToSelector:@selector(OnFailedTransfer:)]) {
+                    [sipCall.delegate OnFailedTransfer:sipCall];
+                }
+            });
         }
             break;
             
         case CALL_EVENT_MENC: {
             NSLog(@"CALL_EVENT_MENC");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([sipCall.delegate respondsToSelector:@selector(OnMediaEncryption:)]) {
+                    [sipCall.delegate OnMediaEncryption:sipCall];
+                }
+            });
         }
             break;
     }
@@ -78,7 +114,21 @@ void call_dtmf(struct call *call, char key, void *arg) {
 }
 
 - (NSString*)peerUri {
+    auto sipCallCache = sipCallsCache.find(self.call);
+    if (sipCallCache == sipCallsCache.end()) {
+        return @"";
+    }
+    
     return @(call_peeruri(self.call));
+}
+
+- (NSString*)peerName {
+    auto sipCallCache = sipCallsCache.find(self.call);
+    if (sipCallCache == sipCallsCache.end()) {
+        return @"";
+    }
+    
+    return @(call_peername(self.call));
 }
 
 - (unsigned)duration {
@@ -87,6 +137,14 @@ void call_dtmf(struct call *call, char key, void *arg) {
 
 - (unsigned short)statusCode {
     return call_scode(self.call);
+}
+
+- (bool)hasAudio {
+    return call_has_audio(self.call);
+}
+
+- (bool)hasVideo {
+    return call_has_video(self.call);
 }
 
 - (void)answer {
@@ -118,15 +176,11 @@ void call_dtmf(struct call *call, char key, void *arg) {
 }
 
 /*
- int  call_connect(struct call *call, const struct pl *paddr);
  int  call_modify(struct call *call);
- bool call_has_audio(const struct call *call);
- bool call_has_video(const struct call *call);
  int  call_transfer(struct call *call, const char *uri);
  
  uint32_t      call_setup_duration(const struct call *call);
  const char   *call_id(const struct call *call);
- const char   *call_peername(const struct call *call);
  const char   *call_localuri(const struct call *call);
  struct audio *call_audio(const struct call *call);
  struct video *call_video(const struct call *call);
