@@ -17,12 +17,27 @@
 
 #include <unordered_map>
 
-extern std::unordered_map<call*, SipCall*> sipCallsCache;
-
-void call_event(struct call *call, enum call_event ev, const char *str, void *arg);
-void call_dtmf(struct call *call, char key, void *arg);
+static SipCall* getSipCall(struct call *call);
+void clearCall(struct call *call) {
+    SipCall* sipCall = getSipCall(call);
+    sipCallsCache.erase(sipCall.call);
+}
 
 static const int kDefaultPort = 5060;
+
+static SipCall* getSipCall(struct call *call) {
+    SipCall* sipCall;
+    if (call != NULL) {
+        auto sipCallCache = sipCallsCache.find(call);
+        if (sipCallCache != sipCallsCache.end()) {
+            debug("Existing call found %@", @(call_peeruri(call)));
+            
+            sipCall = sipCallCache->second;
+        }
+    }
+    
+    return sipCall;
+}
 
 static void signal_handler(int sig)
 {
@@ -53,30 +68,16 @@ static void ua_exit_handler(void *arg)
 @property (nonatomic) struct ua *ua;
 @end
 
-static SipCall* getSipCall(struct call *call, SipClient* sipSdk, NSString* remoteUri) {
-    SipCall* sipCall;
-    if (call != NULL) {
-        auto sipCallCache = sipCallsCache.find(call);
-        if (sipCallCache != sipCallsCache.end()) {
-            NSLog(@"Existing call found %@", @(call_peeruri(call)));
-            
-            sipCall = sipCallCache->second;
-        }
-    }
-    
-    return sipCall;
-}
-
 static void ua_event_handler(struct ua *ua, enum ua_event ev,
     struct call *call, const char *prm, void *arg)
 {
-    NSLog(@"ua_event_handler ev = \"%@\" prm = \"%@\" call = \"%@\"", @(ev), @(prm), call != nil ? @(call_peeruri(call)) : @"NO CALL");
+    debug("ua_event_handler ev = \"%@\" prm = \"%@\" call = \"%@\"", @(ev), @(prm), call != nil ? @(call_peeruri(call)) : @"NO CALL");
     
     SipClient* sipSdk = (__bridge SipClient*)(arg);
     
     switch (ev) {
         case UA_EVENT_REGISTERING: {
-            NSLog(@"UA_EVENT_REGISTERING");
+            debug("UA_EVENT_REGISTERING");
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onRegistering:)]) {
                     [sipSdk.delegate onRegistering:sipSdk];
@@ -86,7 +87,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_REGISTER_OK: {
-            NSLog(@"UA_EVENT_REGISTER_OK");
+            debug("UA_EVENT_REGISTER_OK");
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onRegistered:)]) {
                     [sipSdk.delegate onRegistered:sipSdk];
@@ -96,7 +97,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
 
         case UA_EVENT_REGISTER_FAIL: {
-            NSLog(@"UA_EVENT_REGISTER_FAIL");
+            debug("UA_EVENT_REGISTER_FAIL");
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onFailedRegister:)]) {
                     [sipSdk.delegate onFailedRegister:sipSdk];
@@ -106,7 +107,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
 
         case UA_EVENT_UNREGISTERING: {
-            NSLog(@"UA_EVENT_UNREGISTERING");
+            debug("UA_EVENT_UNREGISTERING");
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onUnRegistering:)]) {
                     [sipSdk.delegate onUnRegistering:sipSdk];
@@ -116,7 +117,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_INCOMING: {
-            NSLog(@"UA_EVENT_CALL_INCOMING");
+            debug("UA_EVENT_CALL_INCOMING");
 
             SipCall* sipCall = [[SipCall alloc] init];
             sipCall.call = call;
@@ -124,7 +125,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
 
             call_set_handlers(call, &call_event, &call_dtmf, (__bridge void*)(sipCall));
 
-            NSLog(@"New incoming call created %@", @(call_peeruri(call)));
+            debug("New incoming call created %@", @(call_peeruri(call)));
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallIncoming:)]) {
@@ -135,8 +136,8 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
 
         case UA_EVENT_CALL_RINGING: {
-            NSLog(@"UA_EVENT_CALL_RINGING");
-            SipCall* sipCall = getSipCall(call, sipSdk, @(prm));
+            debug("UA_EVENT_CALL_RINGING");
+            SipCall* sipCall = getSipCall(call);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallRinging:)]) {
@@ -147,8 +148,8 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_PROGRESS: {
-            NSLog(@"UA_EVENT_CALL_PROGRESS");
-            SipCall* sipCall = getSipCall(call, sipSdk, @(prm));
+            debug("UA_EVENT_CALL_PROGRESS");
+            SipCall* sipCall = getSipCall(call);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallProcess:)]) {
@@ -159,8 +160,8 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_ESTABLISHED: {
-            NSLog(@"UA_EVENT_CALL_ESTABLISHED");
-            SipCall* sipCall = getSipCall(call, sipSdk, @(prm));
+            debug("UA_EVENT_CALL_ESTABLISHED");
+            SipCall* sipCall = getSipCall(call);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallEstablished:)]) {
@@ -171,10 +172,10 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_CLOSED: {
-            NSLog(@"UA_EVENT_CALL_CLOSED");
-            SipCall* sipCall = getSipCall(call, sipSdk, @(prm));
-            sipCallsCache.erase(call);
-            
+            debug("UA_EVENT_CALL_CLOSED");
+            SipCall* sipCall = getSipCall(call);
+            clearCall(call);
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallClosed:)]) {
                     [sipSdk.delegate onCallClosed:sipCall];
@@ -184,8 +185,8 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_TRANSFER_FAILED: {
-            NSLog(@"UA_EVENT_CALL_TRANSFER_FAILED");
-            SipCall* sipCall = getSipCall(call, sipSdk, @(prm));
+            debug("UA_EVENT_CALL_TRANSFER_FAILED");
+            SipCall* sipCall = getSipCall(call);
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallTransferFailed:)]) {
                     [sipSdk.delegate onCallTransferFailed:sipCall];
@@ -195,8 +196,8 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_DTMF_START: {
-            NSLog(@"UA_EVENT_CALL_DTMF_START");
-            SipCall* sipCall = getSipCall(call, sipSdk, @(prm));
+            debug("UA_EVENT_CALL_DTMF_START");
+            SipCall* sipCall = getSipCall(call);
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallDtmfStart:)]) {
                     [sipSdk.delegate onCallDtmfStart:sipCall];
@@ -206,8 +207,8 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_DTMF_END: {
-            NSLog(@"UA_EVENT_CALL_DTMF_END");
-            SipCall* sipCall = getSipCall(call, sipSdk, @(prm));
+            debug("UA_EVENT_CALL_DTMF_END");
+            SipCall* sipCall = getSipCall(call);
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallDtmfEnd:)]) {
                     [sipSdk.delegate onCallDtmfEnd:sipCall];
@@ -354,7 +355,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
 
         call_set_handlers(call, &call_event, &call_dtmf, (__bridge void*)(sipCall));
         
-        NSLog(@"New outgoing call created %@", @(call_peeruri(call)));
+        debug("New outgoing call created %@", @(call_peeruri(call)));
     }
 
     return sipCall;

@@ -150,14 +150,56 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peer URI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vtl-Xg-J3s">
+                                <rect key="frame" x="16" y="64" width="71" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peer name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtL-wx-zSb">
+                                <rect key="frame" x="16" y="93" width="86.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTw-T3-fvK">
+                                <rect key="frame" x="16" y="122" width="54" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local URI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndj-6R-qsR">
+                                <rect key="frame" x="16" y="150" width="77" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KTw-T3-fvK" firstAttribute="top" secondItem="EtL-wx-zSb" secondAttribute="bottom" constant="8.5" id="1md-bA-QkR"/>
+                            <constraint firstItem="Vtl-Xg-J3s" firstAttribute="top" secondItem="y0K-3Y-SV3" secondAttribute="top" id="29U-aw-5fQ"/>
+                            <constraint firstItem="EtL-wx-zSb" firstAttribute="top" secondItem="Vtl-Xg-J3s" secondAttribute="bottom" constant="8.5" id="6ls-AP-ykO"/>
+                            <constraint firstItem="Ndj-6R-qsR" firstAttribute="leading" secondItem="KTw-T3-fvK" secondAttribute="leading" id="9XI-6Z-Ivv"/>
+                            <constraint firstItem="y0K-3Y-SV3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vtl-Xg-J3s" secondAttribute="trailing" constant="16" id="Cq1-fL-38S"/>
+                            <constraint firstItem="EtL-wx-zSb" firstAttribute="leading" secondItem="Vtl-Xg-J3s" secondAttribute="leading" id="QY5-ag-VAC"/>
+                            <constraint firstItem="y0K-3Y-SV3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ndj-6R-qsR" secondAttribute="trailing" constant="16" id="RWp-Ty-HB0"/>
+                            <constraint firstItem="KTw-T3-fvK" firstAttribute="leading" secondItem="EtL-wx-zSb" secondAttribute="leading" id="SuL-ij-eTL"/>
+                            <constraint firstItem="Vtl-Xg-J3s" firstAttribute="leading" secondItem="y0K-3Y-SV3" secondAttribute="leading" constant="16" id="ZCB-h3-Bw1"/>
                             <constraint firstItem="5ck-l1-vxL" firstAttribute="centerX" secondItem="71p-WP-B2l" secondAttribute="centerX" id="g9J-xA-2WN"/>
                             <constraint firstItem="y0K-3Y-SV3" firstAttribute="bottom" secondItem="5ck-l1-vxL" secondAttribute="bottom" constant="20" id="gR3-Xz-4ls"/>
+                            <constraint firstItem="Ndj-6R-qsR" firstAttribute="top" secondItem="KTw-T3-fvK" secondAttribute="bottom" constant="7.5" id="kqz-11-mw8"/>
+                            <constraint firstItem="y0K-3Y-SV3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EtL-wx-zSb" secondAttribute="trailing" constant="16" id="wPJ-aD-4Or"/>
+                            <constraint firstItem="y0K-3Y-SV3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KTw-T3-fvK" secondAttribute="trailing" constant="16" id="whB-pv-upi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y0K-3Y-SV3"/>
                     </view>
+                    <connections>
+                        <outlet property="callIdLabel" destination="KTw-T3-fvK" id="SZ4-1B-0Fx"/>
+                        <outlet property="localUriLabel" destination="Ndj-6R-qsR" id="C8T-bG-D4a"/>
+                        <outlet property="peerNameLabel" destination="EtL-wx-zSb" id="H8o-nQ-pAo"/>
+                        <outlet property="peerUriLabel" destination="Vtl-Xg-J3s" id="ezX-Cp-04G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbB-7e-rdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

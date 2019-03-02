@@ -27,7 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// SIP Call
 @interface SipCall : NSObject
 @property (nonatomic, readonly) NSString* peerUri;
+@property (nonatomic, readonly) NSString* localUri;
 @property (nonatomic, readonly) NSString* peerName;
+@property (nonatomic, readonly) NSString* callId;
 @property (nonatomic, readonly) unsigned duration;
 @property (nonatomic, readonly) unsigned short statusCode;
 @property (nonatomic, readonly) bool hasAudio;
@@ -40,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)holdAnswer;
 - (int)hold:(bool)hold;
 - (int)sendDigit:(char)key;
+- (int)transfer:(NSString*)uri;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,6 +9,11 @@
 import UIKit
 
 class SipCallDetailsViewController : UIViewController {
+    @IBOutlet weak var peerUriLabel: UILabel!
+    @IBOutlet weak var peerNameLabel: UILabel!
+    @IBOutlet weak var callIdLabel: UILabel!
+    @IBOutlet weak var localUriLabel: UILabel!
+    
     var sipCall: SipCall!
 
     @IBAction func hold(_ sender: Any) {
@@ -19,5 +24,14 @@ class SipCallDetailsViewController : UIViewController {
         sipCall.hangup(487, reason: "Request Terminated")
         
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension SipCallDetailsViewController {
+    override func viewDidLoad() {
+        peerUriLabel.text = "Peer URI: \(sipCall.peerUri)"
+        peerNameLabel.text = "Peer name: \(sipCall.peerName)"
+        callIdLabel.text = "Call ID: \(sipCall.callId)"
+        localUriLabel.text = "Peer URI: \(sipCall.localUri)"
     }
 }
