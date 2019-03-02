@@ -18,8 +18,7 @@ class SipCallsViewController: UIViewController {
     
     @IBAction func connect(_ sender: Any) {
         let sipCall = client.makeCall(remoteUri.text!)
-        calls.append(sipCall)
-        callsTableView.reloadData()
+        appendCall(sipCall)
     }
 
     @IBAction func register(_ sender: Any) {
@@ -47,6 +46,22 @@ class SipCallsViewController: UIViewController {
             let destination = segue.destination as! SipCallDetailsViewController
             destination.sipCall = calls[path.row]
         }
+    }
+}
+
+extension SipCallsViewController {
+    private func appendCall(_ sipCall: SipCall) {
+        calls.append(sipCall)
+        sipCall.delegate = self
+        callsTableView.reloadData()
+    }
+    
+    private func clearCall(_ sipCall: SipCall) {
+        if let index = calls.firstIndex(of: sipCall) {
+            calls.remove(at: index)
+        }
+        
+        callsTableView.reloadData()
     }
 }
 
@@ -83,8 +98,7 @@ extension SipCallsViewController : SipClientDelegate {
 
         self.present(alertController, animated: true, completion: nil)
 
-        calls.append(sipCall)
-        callsTableView.reloadData()
+        appendCall(sipCall)
     }
 
     func onCallRinging(_ sipCall: SipCall) {
@@ -102,10 +116,15 @@ extension SipCallsViewController : SipClientDelegate {
     func onCallClosed(_ sipCall: SipCall) {
         logsTextView.text += "Call closed from \(sipCall.peerUri)...\n";
 
-        if let index = calls.firstIndex(of: sipCall) {
-            calls.remove(at: index)
-        }
-        callsTableView.reloadData()
+        clearCall(sipCall)
+    }
+}
+
+extension SipCallsViewController : SipCallDelegate {
+    func onClosed(_ sipCall: SipCall) {
+        logsTextView.text += "Call closed from \(sipCall.peerUri)...\n";
+        
+        clearCall(sipCall)
     }
 }
 

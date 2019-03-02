@@ -18,7 +18,7 @@
 #include <unordered_map>
 
 extern std::unordered_map<call*, SipCall*> sipCallsCache;
-//uint32_t      call_linenum(const struct call *call);
+
 void call_event(struct call *call, enum call_event ev, const char *str, void *arg);
 void call_dtmf(struct call *call, char key, void *arg);
 
@@ -345,7 +345,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
     SipCall* sipCall = [[SipCall alloc] init];
 
     struct call *call;
-    int error = ua_connect(self.ua, &call, nil, [uri cStringUsingEncoding:NSUTF8StringEncoding], VIDMODE_OFF);
+    int error = ua_connect(self.ua, &call, nil, [uri cStringUsingEncoding:NSUTF8StringEncoding], VIDMODE_ON);
     if (error != 0) {
         return nil;
     } else {
