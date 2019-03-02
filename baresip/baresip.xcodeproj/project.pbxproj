@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B415F1E42229B80000399283 /* recorder.c in Sources */ = {isa = PBXBuildFile; fileRef = B415F1DF2229B80000399283 /* recorder.c */; };
+		B415F1E52229B80000399283 /* coreaudio.c in Sources */ = {isa = PBXBuildFile; fileRef = B415F1E02229B80000399283 /* coreaudio.c */; };
+		B415F1E62229B80000399283 /* player.c in Sources */ = {isa = PBXBuildFile; fileRef = B415F1E32229B80000399283 /* player.c */; };
+		B415F1E92229B83300399283 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B415F1E82229B83300399283 /* CoreAudio.framework */; };
+		B415F1EB2229B84400399283 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B415F1EA2229B84300399283 /* AudioToolbox.framework */; };
 		B4712F3922291F0F0091FBA5 /* menc.c in Sources */ = {isa = PBXBuildFile; fileRef = B4712F0A22291F0F0091FBA5 /* menc.c */; };
 		B4712F3A22291F0F0091FBA5 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = B4712F0B22291F0F0091FBA5 /* log.c */; };
 		B4712F3B22291F0F0091FBA5 /* contact.c in Sources */ = {isa = PBXBuildFile; fileRef = B4712F0C22291F0F0091FBA5 /* contact.c */; };
@@ -119,6 +124,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B415F1DF2229B80000399283 /* recorder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = recorder.c; sourceTree = "<group>"; };
+		B415F1E02229B80000399283 /* coreaudio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = coreaudio.c; sourceTree = "<group>"; };
+		B415F1E12229B80000399283 /* module.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = module.mk; sourceTree = "<group>"; };
+		B415F1E22229B80000399283 /* coreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coreaudio.h; sourceTree = "<group>"; };
+		B415F1E32229B80000399283 /* player.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = player.c; sourceTree = "<group>"; };
+		B415F1E82229B83300399283 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		B415F1EA2229B84300399283 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B4712EFD22291EA40091FBA5 /* libbaresip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libbaresip.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4712F0A22291F0F0091FBA5 /* menc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = menc.c; sourceTree = "<group>"; };
 		B4712F0B22291F0F0091FBA5 /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = log.c; sourceTree = "<group>"; };
@@ -272,18 +284,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B415F1EB2229B84400399283 /* AudioToolbox.framework in Frameworks */,
+				B415F1E92229B83300399283 /* CoreAudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B415F1DE2229B80000399283 /* coreaudio */ = {
+			isa = PBXGroup;
+			children = (
+				B415F1DF2229B80000399283 /* recorder.c */,
+				B415F1E02229B80000399283 /* coreaudio.c */,
+				B415F1E12229B80000399283 /* module.mk */,
+				B415F1E22229B80000399283 /* coreaudio.h */,
+				B415F1E32229B80000399283 /* player.c */,
+			);
+			path = coreaudio;
+			sourceTree = "<group>";
+		};
+		B415F1E72229B83300399283 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B415F1EA2229B84300399283 /* AudioToolbox.framework */,
+				B415F1E82229B83300399283 /* CoreAudio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B4712EF422291EA40091FBA5 = {
 			isa = PBXGroup;
 			children = (
 				B4712F0922291F0F0091FBA5 /* baresip */,
 				B4DCABDB222976B00075BD5B /* modules */,
 				B4712EFE22291EA40091FBA5 /* Products */,
+				B415F1E72229B83300399283 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -363,6 +399,7 @@
 				B4DCAD0B222976B00075BD5B /* b2bua */,
 				B4DCAD52222976B00075BD5B /* cons */,
 				B4DCAC06222976B00075BD5B /* contact */,
+				B415F1DE2229B80000399283 /* coreaudio */,
 				B4DCAC29222976B00075BD5B /* ctrl_tcp */,
 				B4DCAD6D222976B00075BD5B /* debug_cmd */,
 				B4DCABE1222976B00075BD5B /* dtls_srtp */,
@@ -869,6 +906,7 @@
 				B4712F4922291F0F0091FBA5 /* rtpext.c in Sources */,
 				B4DCAD7E222976B10075BD5B /* l16.c in Sources */,
 				B4712F4722291F0F0091FBA5 /* aufilt.c in Sources */,
+				B415F1E52229B80000399283 /* coreaudio.c in Sources */,
 				B4712F3C22291F0F0091FBA5 /* timer.c in Sources */,
 				B4712F4222291F0F0091FBA5 /* auplay.c in Sources */,
 				B4712F5122291F0F0091FBA5 /* main.c in Sources */,
@@ -879,6 +917,7 @@
 				B4DCAD80222976B10075BD5B /* amr.c in Sources */,
 				B4712F4D22291F0F0091FBA5 /* mediadev.c in Sources */,
 				B4DCAE0E222976B10075BD5B /* srtp.c in Sources */,
+				B415F1E42229B80000399283 /* recorder.c in Sources */,
 				B4DCADEC222976B10075BD5B /* disp.c in Sources */,
 				B4DCAD7F222976B10075BD5B /* sdp.c in Sources */,
 				B4DCADBA222976B10075BD5B /* aufile.c in Sources */,
@@ -896,6 +935,7 @@
 				B4712F4F22291F0F0091FBA5 /* ausrc.c in Sources */,
 				B4DCAE11222976B10075BD5B /* uuid.c in Sources */,
 				B4DCADB6222976B10075BD5B /* vumeter.c in Sources */,
+				B415F1E62229B80000399283 /* player.c in Sources */,
 				B4712F3922291F0F0091FBA5 /* menc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

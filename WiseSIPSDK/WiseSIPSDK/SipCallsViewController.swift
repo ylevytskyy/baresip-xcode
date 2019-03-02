@@ -109,15 +109,14 @@ extension SipCallsViewController : SipClientDelegate {
 
 extension SipCallsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return calls.count
-        return 0
+        return calls.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath) as! CallCell
-        let calls = Array(self.calls)
-        let sipCall = calls[indexPath.row]
-        cell.remoteUriLabel.text = sipCall.peerUri
+//        let calls = Array(self.calls)
+//        let sipCall = calls[indexPath.row]
+//        cell.remoteUriLabel.text = sipCall.peerUri
         return cell
     }
 }

@@ -54,13 +54,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (SipCall*)makeCall:(NSString*)uri;
 @end
 
-/// SIP Call
-@interface SipCall : NSObject
-@property (nonatomic, readonly) NSString* peerUri;
-
-- (void)answer;
-- (void)hangup:(unsigned short)statusCode reason:(NSString*)reason;
-- (void)holdAnswer;
-@end
-
 NS_ASSUME_NONNULL_END

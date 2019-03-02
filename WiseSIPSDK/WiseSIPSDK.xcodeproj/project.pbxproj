@@ -22,6 +22,10 @@
 		B45EB160222923C200CF7D5E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB15E222923C200CF7D5E /* SystemConfiguration.framework */; };
 		B45EB161222923C200CF7D5E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45EB15F222923C200CF7D5E /* CoreMedia.framework */; };
 		B45EB1632229249D00CF7D5E /* config in Resources */ = {isa = PBXBuildFile; fileRef = B45EB1622229249D00CF7D5E /* config */; };
+		B474E68A2229B40400FE2180 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B474E6882229B40400FE2180 /* libcrypto.a */; };
+		B474E68B2229B40400FE2180 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B474E6892229B40400FE2180 /* libssl.a */; };
+		B4A146ED222A693F000C5006 /* SipCall.mm in Sources */ = {isa = PBXBuildFile; fileRef = B4A146EC222A693F000C5006 /* SipCall.mm */; };
+		B4D8FA642229866500093124 /* accounts in Resources */ = {isa = PBXBuildFile; fileRef = B4D8FA632229866500093124 /* accounts */; };
 		B4DCABD122295FB40075BD5B /* libbaresip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCABD022295FB40075BD5B /* libbaresip.a */; };
 		B4DCABD522295FB40075BD5B /* librem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCABD422295FB40075BD5B /* librem.a */; };
 		B4DCABD8222960F40075BD5B /* libre.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCABD7222960F40075BD5B /* libre.a */; };
@@ -51,6 +55,12 @@
 		B45EB15E222923C200CF7D5E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B45EB15F222923C200CF7D5E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B45EB1622229249D00CF7D5E /* config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config; sourceTree = "<group>"; };
+		B474E6882229B40400FE2180 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../openssl/lib/libcrypto.a; sourceTree = "<group>"; };
+		B474E6892229B40400FE2180 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../openssl/lib/libssl.a; sourceTree = "<group>"; };
+		B4A146EC222A693F000C5006 /* SipCall.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SipCall.mm; sourceTree = "<group>"; };
+		B4A146EE222A6A56000C5006 /* SipCall+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SipCall+Private.h"; sourceTree = "<group>"; };
+		B4A146EF222A6ADF000C5006 /* SipCall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SipCall.h; sourceTree = "<group>"; };
+		B4D8FA632229866500093124 /* accounts */ = {isa = PBXFileReference; lastKnownFileType = text; path = accounts; sourceTree = "<group>"; };
 		B4DCABC622294D710075BD5B /* libbaresip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libbaresip.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4DCABC822294D710075BD5B /* librem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librem.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4DCABCA22294DE70075BD5B /* libre.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libre.a; path = "../../../baresip-ios-master/contrib/fat/lib/libre.a"; sourceTree = "<group>"; };
@@ -68,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B474E68A2229B40400FE2180 /* libcrypto.a in Frameworks */,
+				B474E68B2229B40400FE2180 /* libssl.a in Frameworks */,
 				B4DCABD8222960F40075BD5B /* libre.a in Frameworks */,
 				B4DCABD122295FB40075BD5B /* libbaresip.a in Frameworks */,
 				B4DCABD522295FB40075BD5B /* librem.a in Frameworks */,
@@ -115,7 +127,11 @@
 				B45EB1372229214200CF7D5E /* Info.plist */,
 				B45EB1442229224600CF7D5E /* SipClient.h */,
 				B45EB14D2229234500CF7D5E /* SipClient.mm */,
+				B4A146EC222A693F000C5006 /* SipCall.mm */,
 				B45EB1432229224600CF7D5E /* WiseSIPSDK-Bridging-Header.h */,
+				B4D8FA632229866500093124 /* accounts */,
+				B4A146EE222A6A56000C5006 /* SipCall+Private.h */,
+				B4A146EF222A6ADF000C5006 /* SipCall.h */,
 			);
 			path = WiseSIPSDK;
 			sourceTree = "<group>";
@@ -123,6 +139,8 @@
 		B45EB14F2229236F00CF7D5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B474E6882229B40400FE2180 /* libcrypto.a */,
+				B474E6892229B40400FE2180 /* libssl.a */,
 				B4DCABD7222960F40075BD5B /* libre.a */,
 				B4DCABD022295FB40075BD5B /* libbaresip.a */,
 				B4DCABD222295FB40075BD5B /* libre.a */,
@@ -208,6 +226,7 @@
 				B45EB1362229214200CF7D5E /* LaunchScreen.storyboard in Resources */,
 				B45EB1332229214200CF7D5E /* Assets.xcassets in Resources */,
 				B45EB1312229214200CF7D5E /* Main.storyboard in Resources */,
+				B4D8FA642229866500093124 /* accounts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45EB14E2229234500CF7D5E /* SipClient.mm in Sources */,
+				B4A146ED222A693F000C5006 /* SipCall.mm in Sources */,
 				B45EB1402229218400CF7D5E /* CallCell.swift in Sources */,
 				B45EB1412229218400CF7D5E /* SipCallDetailsViewController.swift in Sources */,
 				B45EB12C2229214200CF7D5E /* AppDelegate.swift in Sources */,
@@ -306,6 +326,7 @@
 					"$(SRCROOT)/../../baresip/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LIBRARY_SEARCH_PATHS = "/Users/lion/Downloads/tmp/baresip-xcode/openssl/lib";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -366,6 +387,7 @@
 					"$(SRCROOT)/../../baresip/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LIBRARY_SEARCH_PATHS = "/Users/lion/Downloads/tmp/baresip-xcode/openssl/lib";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
