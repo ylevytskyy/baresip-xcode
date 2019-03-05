@@ -23,14 +23,12 @@ void clearCall(struct call *call) {
     sipCallsCache.erase(sipCall.call);
 }
 
-static const int kDefaultPort = 5060;
-
 static SipCall* getSipCall(struct call *call) {
     SipCall* sipCall;
     if (call != NULL) {
         auto sipCallCache = sipCallsCache.find(call);
         if (sipCallCache != sipCallsCache.end()) {
-            debug("Existing call found %@", @(call_peeruri(call)));
+            debug("Existing call found %s\n", call_peeruri(call));
             
             sipCall = sipCallCache->second;
         }
@@ -71,13 +69,13 @@ static void ua_exit_handler(void *arg)
 static void ua_event_handler(struct ua *ua, enum ua_event ev,
     struct call *call, const char *prm, void *arg)
 {
-    debug("ua_event_handler ev = \"%@\" prm = \"%@\" call = \"%@\"", @(ev), @(prm), call != nil ? @(call_peeruri(call)) : @"NO CALL");
+    debug("ua_event_handler ev = \"%d\" prm = \"%s\" call = \"%s\"\n", ev, prm, call != nil ? call_peeruri(call) : "NO CALL");
     
     SipClient* sipSdk = (__bridge SipClient*)(arg);
     
     switch (ev) {
         case UA_EVENT_REGISTERING: {
-            debug("UA_EVENT_REGISTERING");
+            debug("UA_EVENT_REGISTERING\n");
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onRegistering:)]) {
                     [sipSdk.delegate onRegistering:sipSdk];
@@ -87,7 +85,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_REGISTER_OK: {
-            debug("UA_EVENT_REGISTER_OK");
+            debug("UA_EVENT_REGISTER_OK\n");
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onRegistered:)]) {
                     [sipSdk.delegate onRegistered:sipSdk];
@@ -97,7 +95,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
 
         case UA_EVENT_REGISTER_FAIL: {
-            debug("UA_EVENT_REGISTER_FAIL");
+            debug("UA_EVENT_REGISTER_FAIL\n");
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onFailedRegister:)]) {
                     [sipSdk.delegate onFailedRegister:sipSdk];
@@ -107,7 +105,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
 
         case UA_EVENT_UNREGISTERING: {
-            debug("UA_EVENT_UNREGISTERING");
+            debug("UA_EVENT_UNREGISTERING\n");
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onUnRegistering:)]) {
                     [sipSdk.delegate onUnRegistering:sipSdk];
@@ -117,7 +115,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_INCOMING: {
-            debug("UA_EVENT_CALL_INCOMING");
+            debug("UA_EVENT_CALL_INCOMING\n");
 
             SipCall* sipCall = [[SipCall alloc] init];
             sipCall.call = call;
@@ -125,7 +123,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
 
             call_set_handlers(call, &call_event, &call_dtmf, (__bridge void*)(sipCall));
 
-            debug("New incoming call created %@", @(call_peeruri(call)));
+            debug("New incoming call created %s\n", call_peeruri(call));
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallIncoming:)]) {
@@ -136,7 +134,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
 
         case UA_EVENT_CALL_RINGING: {
-            debug("UA_EVENT_CALL_RINGING");
+            debug("UA_EVENT_CALL_RINGING\n");
             SipCall* sipCall = getSipCall(call);
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -148,7 +146,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_PROGRESS: {
-            debug("UA_EVENT_CALL_PROGRESS");
+            debug("UA_EVENT_CALL_PROGRESS\n");
             SipCall* sipCall = getSipCall(call);
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -160,7 +158,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_ESTABLISHED: {
-            debug("UA_EVENT_CALL_ESTABLISHED");
+            debug("UA_EVENT_CALL_ESTABLISHED\n");
             SipCall* sipCall = getSipCall(call);
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -172,7 +170,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_CLOSED: {
-            debug("UA_EVENT_CALL_CLOSED");
+            debug("UA_EVENT_CALL_CLOSED\n");
             SipCall* sipCall = getSipCall(call);
             clearCall(call);
 
@@ -185,7 +183,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_TRANSFER_FAILED: {
-            debug("UA_EVENT_CALL_TRANSFER_FAILED");
+            debug("UA_EVENT_CALL_TRANSFER_FAILED\n");
             SipCall* sipCall = getSipCall(call);
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallTransferFailed:)]) {
@@ -196,7 +194,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_DTMF_START: {
-            debug("UA_EVENT_CALL_DTMF_START");
+            debug("UA_EVENT_CALL_DTMF_START\n");
             SipCall* sipCall = getSipCall(call);
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallDtmfStart:)]) {
@@ -207,7 +205,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
             break;
             
         case UA_EVENT_CALL_DTMF_END: {
-            debug("UA_EVENT_CALL_DTMF_END");
+            debug("UA_EVENT_CALL_DTMF_END\n");
             SipCall* sipCall = getSipCall(call);
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([sipSdk.delegate respondsToSelector:@selector(onCallDtmfEnd:)]) {
@@ -230,8 +228,6 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
     if (self) {
         _username = username;
         _domain = domain;
-        
-        _port = kDefaultPort;
     }
     return self;
 }
@@ -245,9 +241,29 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
     // Initialize dynamic modules.
     mod_init();
     
-    NSString *path = [[[NSBundle mainBundle] pathForResource:@"config" ofType:@""] stringByDeletingLastPathComponent];
-    conf_path_set([path cStringUsingEncoding:NSUTF8StringEncoding]);
+    log_enable_debug(true);
+
+    NSString *applicationDocumentsDirectory = [(NSURL *)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] absoluteString];
+    // Copy confiug to Documents folder
+    NSString *configFileSourcePath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@""];
+    NSString *configFileDestinationPath = [applicationDocumentsDirectory stringByAppendingPathComponent:@"config"];
+    NSString *configFile = [NSString stringWithContentsOfFile:configFileSourcePath encoding:NSUTF8StringEncoding error:nil];
+    [configFile writeToURL:[NSURL URLWithString:configFileDestinationPath] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+
+    // Create accounts file in Documents foilder
+    NSString *account;
+    if (self.password) {
+        account = [NSString stringWithFormat:@"<sip:%@@%@>;auth_pass=%@;transport=tcp\n", self.username, self.domain, self.password];
+    } else {
+        account = [NSString stringWithFormat:@"<sip:%@@%@>;transport=tcp\n", self.username, self.domain];
+    }
+    NSString *accountsFileDestinationPath = [applicationDocumentsDirectory stringByAppendingPathComponent:@"accounts"];
+    [account writeToURL:[NSURL URLWithString:accountsFileDestinationPath] atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
+    // Remove "file://" prefix
+    NSString *configFilePath = [[applicationDocumentsDirectory substringToIndex:(applicationDocumentsDirectory.length - 1)] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
+    conf_path_set([configFilePath cStringUsingEncoding:NSUTF8StringEncoding]);
+    // Set configuration
     error = conf_configure();
     if (error != 0) {
         return error;
@@ -279,15 +295,8 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
         return error;
     }
     
-    NSString* aor;
-    if (self.password) {
-        aor = [NSString stringWithFormat:@"sip:%@@%@:%@;auth_pass=%@", self.username, self.domain, @(self.port), self.password];
-    } else {
-        aor = [NSString stringWithFormat:@"sip:%@@%@:%@", self.username, self.domain, @(self.port)];
-    }
-    
     // Start user agent.
-    error = ua_alloc(&_ua, [aor cStringUsingEncoding:NSUTF8StringEncoding]);
+    error = ua_alloc(&_ua, [account cStringUsingEncoding:NSUTF8StringEncoding]);
     if (error != 0) {
         return error;
     }
@@ -355,7 +364,7 @@ static void ua_event_handler(struct ua *ua, enum ua_event ev,
 
         call_set_handlers(call, &call_event, &call_dtmf, (__bridge void*)(sipCall));
         
-        debug("New outgoing call created %@", @(call_peeruri(call)));
+        debug("New outgoing call created %s\n", call_peeruri(call));
     }
 
     return sipCall;

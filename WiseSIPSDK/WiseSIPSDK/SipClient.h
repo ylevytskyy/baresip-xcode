@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, nonnull) NSString* username;
 @property (readonly, nonatomic, nonnull) NSString* domain;
 @property (nonatomic) NSString* password;
-@property (nonatomic) int port;
+@property (nonatomic) NSNumber *port;
 
 @property (readonly, nonatomic) NSString* aor;
 
